@@ -10,7 +10,7 @@ A typical scanlation process has several roles/jobs, but the one we're concerned
 
 First, the cleaner will get the 'raws', which are scans or pictures of the print form of the original content. The quality of the raws differ quite a bit. The job of the cleaner then, is to edit the raws so that the finished products look like officially published online volumes. Below are some examples of raw vs. clean manga pages:
 
-<img src='imgs/Example 1.jpg' />
+![Example 1]<img src='imgs/Example\ 1.jpg' />
 
 
  
