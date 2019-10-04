@@ -13,7 +13,34 @@ First, the cleaner will get the 'raws', which are scans or pictures of the print
 <img src='imgs/Example 1.png' width ="400px"/> <img src='imgs/Example 2.png' width ="400px"/> <img src='imgs/Example 3.png' width ="400px"/> <img src='imgs/Example 4.png' width ="400px"/> 
 
 
+### The problem of automating the cleaning process
+
+Cleaning a manga page may seem pretty simple, but it is a more complicated and difficult process than just turning a gray scan into black and white. In fact, to be able to clean at a very advanced level and output a very high-quality product takes years of experience and practice. In one of my scanlation groups, cleaners actaully get put through a very rigorous training regime before they can start cleaning real chapters for the group. 
+
+While this may differ betweem different scanlation groups a basic cleaning process looks like this, typically done with Photoshop:
+
+1. **Crop and rotate** - Crop out parts of the raw that are not part of the page. Straighten the page so it is parallel to the image
+2. **Adjust Levels** - Adjust levels so the dark parts of the image is black and lighter parts are white
+3. **Burn and Dodge** - Darken and lighten parts of the image where needed
+4. **Sharpening and Blurring** - Smoothening blemishes and page textures, sharpeing pixels and lines, also done subjectively, 
+5. **Topaz Denoise & Clean** - Denoising the image using a Photoshop plugin. Reduces noise and enhances surface texture without losing image detail. 
+6. **Repeat Steps 3, 4** - This time more for quality and dust (specks of black dots on white areas and vice vera) removal.
+7. **Remove text** - Whitening out text in speech bubbles or outside the panels. 
+
+This is a very rough idea of the process, and again different groups do it with different techniques and tools. And, I'm not a cleaner myself, so I'm probably not doing the process any justice with my crude explanations. To get a better picture of the process check out this youtube video: https://www.youtube.com/watch?v=5fyBrsgZb3E&feature=youtu.be \[Credits to Prostyle from MangaStream\]
  
+There have probably been many attempts to automate the process. But, I think the most that can be achieved is automating only certain parts of it like level adjusting or denoising. There are definitely some macros that make certain steps easier, like whitening speech bubbles, etc. In fact, Topaz, the photoshop plugin generally used by the scanlation community, is itself an AI powered tool that definitely makes life a lot easier.
+
+However, to automate the WHOLE process from start to finish seems impossible. There are just too many parts that need human input, for instance, recognizing which are folds/lines or blemishes in the paper and which are part of the drawings, or deciding approximating how much to sharpen or blur the images. Moreover, the quality of the raws differ quite a bit, which only increases the subjectivity in the process. 
+
+But perhaps, using deep learning technology, we can _teach_ a network to _learn_ to recognize and learn to do these things. And this is exactly what I'm hoping to experiment with through this project. Will a pix2pix GAN network be able to clean manga up to the same or similar standard to that of humans? 
+
+## Pix2Pix in Pytorch
+
+I decided to try using a pix2pix network because this technology does direct image to image translations. Since we have paired data, that is, we know what the input is and more less or less what the output should look like, it seems pretty fitting for the manga cleaning problem. 
+
+Below are documentation on the pix2pix implementation in pytorch. It also explains how to setup and train the network using your own data.
+This is directly forked from junyanz/pytorch-CycleGAN-and-pix2pix):
 
 **Pix2pix:  [Project](https://phillipi.github.io/pix2pix/) |  [Paper](https://arxiv.org/pdf/1611.07004.pdf) |  [Torch](https://github.com/phillipi/pix2pix)**
 
@@ -75,9 +102,6 @@ cd pytorch-CycleGAN-and-pix2pix
   - For pip users, please type the command `pip install -r requirements.txt`.
   - For Conda users, we provide a installation script `./scripts/conda_deps.sh`. Alternatively, you can create a new Conda environment using `conda env create -f environment.yml`.
   - For Docker users, we provide the pre-built Docker image and Dockerfile. Please refer to our [Docker](docs/docker.md) page.
-
-
-
 
 ### pix2pix train/test
 - Download a pix2pix dataset (e.g.[facades](http://cmp.felk.cvut.cz/~tylecr1/facade/)):
