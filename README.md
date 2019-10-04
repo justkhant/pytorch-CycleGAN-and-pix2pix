@@ -1,7 +1,19 @@
 # MANGAClean
-MANGAClean uses the PyTorch implementation of the pix2pix network, forked from [pytorch-CycleGAN-and-pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix) to convert raw dirty scans of manga pages into high-quality, denoised images:
+MANGAClean uses the PyTorch implementation of the pix2pix GAN network, forked from [pytorch-CycleGAN-and-pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix) to convert raw dirty scans of manga pages into high-quality, denoised images:
 
-The goal of this project was to effectively automate the cleaning process in manga scanlation procedures.   
+The goal of this project was to effectively automate the cleaning process in manga scanlation procedures. But before moving on, here is some background information on what 'scanlation' and what 'manga cleaning' entails: 
+
+## Background
+From Wikipedia, **scanlation** is the fan-made scanning, translation, and editing of comics from one language into another. While this is not limited only to manga (Japanese comics), my personal experiences have only been with scanlating manga, so this project has only been trained/tested with manga pages. 
+
+A typical scanlation process has several roles/jobs, but the one we're concerned with is the job of the cleaner. So what exactly does a 'cleaner' do?
+
+First, the cleaner will get the 'raws', which are scans or pictures of the print form of the original content. The quality of the raws differ quite a bit. The job of the cleaner then, is to edit the raws so that the finished products look like officially published online volumes. Below are some examples of raw vs. clean manga pages:
+
+<img src='imgs/Example 1.jpg' />
+
+
+ 
 
 **Pix2pix:  [Project](https://phillipi.github.io/pix2pix/) |  [Paper](https://arxiv.org/pdf/1611.07004.pdf) |  [Torch](https://github.com/phillipi/pix2pix)**
 
