@@ -39,9 +39,22 @@ But perhaps, using deep learning technology, we can _teach_ a network to _learn_
 
 I decided to try using a pix2pix network because this technology does direct image to image translations. Since we have paired data, that is, we know what the input is and more less or less what the output should look like, it seems pretty fitting for the manga cleaning problem. 
 
-Below are documentation on the pix2pix implementation in pytorch. It also explains how to setup and train the network using your own data.
-This is directly forked from junyanz/pytorch-CycleGAN-and-pix2pix):
+[Below](##Implementation) are documentation on the pix2pix implementation in pytorch. It also explains how to setup and train the network using your own data.
+This is directly forked from junyanz/pytorch-CycleGAN-and-pix2pix).
 
+## Model 1 Test Results
+
+The first model was trained using about 200 images for training, 20 for validation, and 10 for testing. As for preprocessing, the network only accepts images of dimensions multiple of 4s. So, a 560 x 560 random crop of the training images are applied before feeding them into the network. Below are the results of the training, and what the model currently outputs during testing:  
+
+<img src='imgs/comparisons/labeled/test_result 1.png' width ="800px"/> <img src='imgs/comparisons/labeled/test_result 2.png' width ="800px"/> <img src='imgs/comparisons/labeled/test_result 3.png' width ="800px"/> <img src='imgs/comparisons/labeled/test_result 4.png' width ="800px"/> <img src='imgs/comparisons/labeled/test_result 5.png' width ="800px"/> <img src='imgs/comparisons/labeled/test_result 6.png' width ="800px"/> <img src='imgs/comparisons/labeled/test_result 7.png' width ="800px"/> 
+
+Overall, this current model works great for images without halftones, which are the gray colored sections in the pages. The outputs in these cases are up to the same quality as the actual cleaned version of the raw images, which is great!. However, in the cases where there are halftones, the quality of the output is a lot less that the actual versions. The halftones are not blended well and are very patchy. You can see that in the actual versions, the grays are a lot smoother:
+
+<img src='imgs/comparisons/labeled/halftones 1.png' width ="400px"/>     <img src='imgs/comparisons/labeled/halftones 2.png' width ="400px"/>
+
+To help the network fix these issues, I planned to try collecting and using more data; perhaps double the amount to 400 training images instead of 200 images. I also planned to run it for more epochs! But overall, this model is actaully pretty good enough that a person inexperienced with scalantion and cleaning manga could not tell the difference (i.e. my supervisor). Or, if we didn't care about making the cleaned images very high quality, which some scalantion teams actaully don't really care about, this model would work great, especially since it works very well when the images have no halftones. My end goal is however, to train a model that could output cleaned images that can reach the same quality as the actual versions. 
+
+## Implementation
 **Pix2pix:  [Project](https://phillipi.github.io/pix2pix/) |  [Paper](https://arxiv.org/pdf/1611.07004.pdf) |  [Torch](https://github.com/phillipi/pix2pix)**
 
 <img src="https://phillipi.github.io/pix2pix/images/teaser_v3.png" width="800px"/>
