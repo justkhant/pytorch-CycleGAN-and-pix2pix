@@ -39,7 +39,7 @@ But perhaps, using deep learning technology, we can _teach_ a network to _learn_
 
 I decided to try using a pix2pix network because this technology does direct image to image translations. Since we have paired data, that is, we know what the input is and more less or less what the output should look like, it seems pretty fitting for the manga cleaning problem. 
 
-[Below](##Implementation) are documentation on the pix2pix implementation in pytorch. It also explains how to setup and train the network using your own data.
+[Below](##-Implementation) are documentation on the pix2pix implementation in pytorch. It also explains how to setup and train the network using your own data.
 This is directly forked from junyanz/pytorch-CycleGAN-and-pix2pix).
 
 ## Model 1 Test Results
