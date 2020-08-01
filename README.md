@@ -4,8 +4,7 @@ MANGAClean uses the PyTorch implementation of the pix2pix GAN network, forked fr
 The goal of this project was to effectively automate the cleaning process in manga scanlation procedures. But before moving on, here is some background information on what 'scanlation' and what 'manga cleaning' entails: 
 
 ## Background
-From Wikipedia, **scanlation** is the fan-made scanning, translation, and editing of comics from one language into another. While this is not limited only to manga (Japanese comics), my personal experiences have only been with scanlating manga, so this project has only been trained/tested with manga pages. 
-
+From Wikipedia, **scanlation** is the fan-made scanning, translation, and editing of comics from one language into another. 
 A typical scanlation process has several roles/jobs, but the one we're concerned with is the job of the cleaner. So what exactly does a 'cleaner' do?
 
 First, the cleaner will get the 'raws', which are scans or pictures of the print form of the original content. The quality of the raws differ quite a bit. The job of the cleaner then, is to edit the raws so that the finished products look like officially published online volumes. Below are some examples of raw vs. clean manga pages:
@@ -136,6 +135,17 @@ python test.py --dataroot ./datasets/facades --name facades_pix2pix --model pix2
 ```
 - The test results will be saved to a html file here: `./results/facades_pix2pix/test_latest/index.html`. You can find more scripts at `scripts` directory.
 - To train and test pix2pix-based colorization models, please add `--model colorization` and `--dataset_mode colorization`. See our training [tips](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/blob/master/docs/tips.md#notes-on-colorization) for more details.
+
+We provide a python script to generate pix2pix training data in the form of pairs of images {A,B}, where A and B are two different depictions of the same underlying scene. For example, these might be pairs {label map, photo} or {bw image, color image}. Then we can learn to translate A to B or B to A:
+
+Create folder /path/to/data with subfolders A and B. A and B should each have their own subfolders train, val, test, etc. In /path/to/data/A/train, put training images in style A. In /path/to/data/B/train, put the corresponding images in style B. Repeat same for other data splits (val, test, etc).
+
+Corresponding images in a pair {A,B} must be the same size and have the same filename, e.g., /path/to/data/A/train/1.jpg is considered to correspond to /path/to/data/B/train/1.jpg.
+
+Once the data is formatted this way, call:
+
+python datasets/combine_A_and_B.py --fold_A /path/to/data/A --fold_B /path/to/data/B --fold_AB /path/to/data
+This will combine each pair of images (A,B) into a single image file, ready for training.
 
 ### Apply a pre-trained model (pix2pix)
 Download a pre-trained model with `./scripts/download_pix2pix_model.sh`.
