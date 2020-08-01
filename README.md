@@ -15,7 +15,7 @@ First, the cleaner will get the 'raws', which are scans or pictures of the print
 
 ### The problem of automating the cleaning process
 
-Cleaning a manga page may seem pretty simple, but it is a more complicated and difficult process than just turning a gray scan into black and white. In fact, to be able to clean at a very advanced level and output a very high-quality product takes years of experience and practice. In one of my scanlation groups, cleaners actaully get put through a very rigorous training regime before they can start cleaning real chapters for the group. 
+Cleaning a manga page may seem pretty simple, but it is a more complicated and difficult process than just turning a gray scan into black and white. In fact, to be able to clean at a very advanced level and output a very high-quality product takes years of experience and practice. 
 
 While this may differ betweem different scanlation groups a basic cleaning process looks like this, typically done with Photoshop:
 
@@ -27,8 +27,7 @@ While this may differ betweem different scanlation groups a basic cleaning proce
 6. **Repeat Steps 3, 4** - This time more for quality and dust (specks of black dots on white areas and vice vera) removal.
 7. **Remove text** - Whitening out text in speech bubbles or outside the panels. 
 
-This is a very rough idea of the process, and again different groups do it with different techniques and tools. And, I'm not a cleaner myself, so I'm probably not doing the process any justice with my crude explanations. To get a better picture of the process check out this youtube video: 
-https://www.youtube.com/watch?v=5fyBrsgZb3E&feature=youtu.be \[Credits to Prostyle from MangaStream\]
+This is a very rough idea of the process, and again different groups do it with different techniques and tools. 
  
 There have probably been many attempts to automate the process. But, I think the most that can be achieved is automating only certain parts of it like level adjusting or denoising. There are definitely some macros that make certain steps easier, like whitening speech bubbles, etc. In fact, Topaz, the photoshop plugin generally used by the scanlation community, is itself an AI powered tool that definitely makes life a lot easier.
 
