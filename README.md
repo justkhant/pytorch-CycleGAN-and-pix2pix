@@ -53,6 +53,9 @@ Overall, this current model works great for images without halftones, which are 
 
 To help the network fix these issues, I planned to try collecting and using more data; perhaps double the amount to 400 training images instead of 200 images. I also planned to run it for more epochs! But overall, this model is actaully pretty good enough that a person inexperienced with scalantion and cleaning manga could not tell the difference (i.e. my supervisor). Or, if we didn't care about making the cleaned images very high quality, which some scalantion teams actaully don't really care about, this model would work great, especially since it works very well when the images have no halftones. My end goal is however, to train a model that could output cleaned images that can reach the same quality as the actual versions. 
 
+## Model 2 (In training)
+`python train.py  --dataroot mangaclean_data/AB/ --name mangaClean_pix2pix --model pix2pix --gpu_ids -1 --input_nc 1 --output_nc 1 --load_size 768 --crop_size 768 --preprocess crop --display_freq 100 --save_epoch_freq 2`
+
 ## Implementation
 **Pix2pix:  [Project](https://phillipi.github.io/pix2pix/) |  [Paper](https://arxiv.org/pdf/1611.07004.pdf) |  [Torch](https://github.com/phillipi/pix2pix)**
 
